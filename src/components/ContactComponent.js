@@ -151,7 +151,7 @@ class Contact extends Component {
                                             validEmail
                                         }} />
                                     <Errors className="text-danger" model=".email" show="touched" messages={{
-                                        required: 'Required ',
+                                        required: 'Required',
                                         validEmail: 'Email not a valid one'
                                     }} />
                                 </Col>
