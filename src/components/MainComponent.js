@@ -35,10 +35,7 @@ const mapDispatchToProps = dispatch => ({
 
 class Main extends Component {
 
-  constructor(props){
-     super(props);
-     
-  }
+ 
 
   componentDidMount(){
     this.props.fetchDishes();
@@ -115,3 +112,8 @@ class Main extends Component {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+
+
+
+
+

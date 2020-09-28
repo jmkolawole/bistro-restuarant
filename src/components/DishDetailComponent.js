@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {
-    Card, CardImg, CardText, CardBody, CardTitle, ListGroup, ListGroupItem, Breadcrumb, BreadcrumbItem,
+    Card, CardImg, CardText, CardBody, CardTitle,  Breadcrumb, BreadcrumbItem,
     Button, Modal, ModalHeader, ModalBody, Row, Label, Col, CardHeader
 } from 'reactstrap';
 import { Control, LocalForm, Errors } from "react-redux-form"
 import { Link } from 'react-router-dom';
 import {Loading} from './LoadingComponent';
 import {baseUrl} from '../shared/baseUrl';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components';
 
 
 
@@ -124,6 +125,10 @@ function RenderDish({ dish }) {
 
         return (
             <div>
+             <FadeTransform in transformProps={{
+                exitTransform: 'scale(0.5) translateY(-50%)'
+
+            }}>   
                 <Card>
                     <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
                     <CardBody>
@@ -131,6 +136,7 @@ function RenderDish({ dish }) {
                         <CardText>{dish.description}</CardText>
                     </CardBody>
                 </Card>
+            </FadeTransform>    
 
             </div>
         );
@@ -144,11 +150,16 @@ const RenderComments = ({ comments, postComment, dishId }) => {
 	if (comments != null) {
 		return (
 			<>
-				<Card>
-                <CardHeader tag="h4">Comments</CardHeader>
-                <CardBody> 
+				
+                <Card>
+                <CardHeader><h4>Comments</h4></CardHeader>
+                <CardBody>    
+                <ul className="list-unstyled">  
+                <Stagger in>   
 				{comments.map((comment) => (
-					<ul key={comment.id} className="list-unstyled">
+					     
+                         <Fade in>    
+                        <li key={comment.id}></li>     
 						<li className="mb-2">{comment.comment}</li>
 						<li>
 							-- {comment.author}{" "}
@@ -158,8 +169,12 @@ const RenderComments = ({ comments, postComment, dishId }) => {
 								day: "2-digit",
 							}).format(new Date(Date.parse(comment.date)))}
 						</li>
-					</ul>
+                        </Fade>
+                        
+					
                 ))}
+                </Stagger>
+                </ul>
                 </CardBody>
                 </Card>
 				<CommentForm dishId={dishId} postComment={postComment}/>
