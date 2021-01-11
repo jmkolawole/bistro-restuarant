@@ -14,12 +14,13 @@ export const postComment = (dishId, rating, comment) => (dispatch) => {
         comment: comment
     }
     console.log('Comment ', newComment);
-
+  
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
     return fetch(baseUrl + 'comments', {
         method: 'POST',
         body: JSON.stringify(newComment),
+        Access-Control-Allow-Origin : 'http://localhost/3000',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': bearer

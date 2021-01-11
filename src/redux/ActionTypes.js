@@ -10,6 +10,8 @@ export const PROMOS_FAILED = 'PROMOS_FAILED';
 export const LEADERS_LOADING = 'LEADERS_LOADING';
 export const ADD_LEADERS = 'ADD_LEADERS';
 export const LEADERS_FAILED = 'LEADERS_FAILED';
+
+//Authenticated actions
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';

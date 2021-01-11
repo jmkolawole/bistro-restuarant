@@ -16,19 +16,36 @@ function RenderCard({item, isLoading, errMess}) {
         );
     }
     else
+    var card;
+    if(item){
+        card = <Card>
+                    
+        <CardImg src={baseUrl + item.image} alt={item.name} />
+        <CardBody>
+            <CardTitle>{item.name}</CardTitle>
+            {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
+            <CardText>{item.description}</CardText>
+        </CardBody>
+    </Card>
+    }else{
+
+        card = <Card>
+                    
+        
+        <CardBody>
+            <CardTitle>No Items Yet</CardTitle>
+            <CardText>Empty</CardText>
+        </CardBody>
+    </Card>
+        
+    } 
         return(
             <FadeTransform in 
                 transformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
-                <Card>
-                    <CardImg src={baseUrl + item.image} alt={item.name} />
-                    <CardBody>
-                        <CardTitle>{item.name}</CardTitle>
-                        {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
-                        <CardText>{item.description}</CardText>
-                    </CardBody>
-                </Card>
+                {card}
+                
             </FadeTransform>
         );
 }
